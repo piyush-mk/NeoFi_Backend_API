@@ -13,3 +13,4 @@ redis==5.0.1
 pytest
 httpx
 pydantic_settings
+pydantic[email]
