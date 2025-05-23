@@ -64,9 +64,7 @@ log/
 .env.*
 !.env.example
 
-# Alembic
-alembic/versions/*.py
-!alembic/versions/__init__.py
+
 
 # Project specific
 *.pyc
