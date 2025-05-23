@@ -1,6 +1,7 @@
 from pydantic_settings import BaseSettings
 from typing import Optional
 from functools import lru_cache
+import os
 
 
 class Settings(BaseSettings):
@@ -14,7 +15,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/neofi_events"
+    DATABASE_URL: str = os.environ["DATABASE_URL"]
     
     # Redis
     REDIS_URL: Optional[str] = None
