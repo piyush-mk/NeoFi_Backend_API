@@ -4,6 +4,64 @@ A collaborative event management API built with FastAPI, PostgreSQL, and Alembic
 
 ---
 
+## Usage & API Flow
+
+**Deployed API:** [https://neofi-backend-api.onrender.com/docs](https://neofi-backend-api.onrender.com/docs)
+
+### Typical Usage Flow
+
+1. **Register a User**
+   - `POST /api/v1/auth/register`
+   - Provide email, username, and password.
+
+2. **Login**
+   - `POST /api/v1/auth/login`
+   - Get a JWT access token for authentication.
+
+3. **Use the Token**
+   - For all protected endpoints, add the header:
+     ```
+     Authorization: Bearer <your_access_token>
+     ```
+
+4. **Create an Event**
+   - `POST /api/v1/events`
+   - Provide event details (title, description, start/end time, etc.).
+
+5. **List Your Events**
+   - `GET /api/v1/events`
+   - See all events you own or have access to.
+
+6. **Get/Update/Delete an Event**
+   - `GET /api/v1/events/{event_id}`
+   - `PUT /api/v1/events/{event_id}`
+   - `DELETE /api/v1/events/{event_id}`
+
+7. **Share an Event**
+   - `POST /api/v1/events/{event_id}/share`
+   - Share with another user by user_id and assign a role (editor/viewer).
+
+8. **Manage Permissions**
+   - `GET /api/v1/events/{event_id}/permissions`
+   - `PUT /api/v1/events/{event_id}/permissions/{user_id}`
+   - `DELETE /api/v1/events/{event_id}/permissions/{user_id}`
+
+9. **Event Versioning**
+   - Every update creates a new version.
+   - `GET /api/v1/events/{event_id}/history/{version_number}` to view a specific version.
+   - `POST /api/v1/events/{event_id}/rollback/{version_number}` to rollback.
+   - `GET /api/v1/events/{event_id}/diff/{version_number1}/{version_number2}` to see changes between versions.
+
+10. **Changelog**
+    - `GET /api/v1/events/{event_id}/changelog` to see a log of all changes.
+
+---
+
+**Explore and test all endpoints interactively at:**
+[https://neofi-backend-api.onrender.com/docs](https://neofi-backend-api.onrender.com/docs)
+
+---
+
 ## Database Schema Overview
 
 ### User
@@ -141,3 +199,5 @@ pytest
 
 ## Contributing
 Pull requests welcome. For major changes, open an issue first.
+
+---
